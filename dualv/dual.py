@@ -63,3 +63,6 @@ class Dual:
 
     def __ne__(self, second):
         return (self.real != second.real) or (self.dual != second.dual)
+
+    def __neg__(self):
+        return Dual(-self.real, -self.dual)

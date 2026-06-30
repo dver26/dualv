@@ -116,7 +116,62 @@ else:
     print("Cosinus Malament")
 
 if (np.isclose(tan_pi, 0) and 
-        np.isclose(tan_dual_pi.real, 0) and np.isclose(tan_dual_pi.dual, 1)):
+        dv.is_dual_close(tan_dual_pi, Dual(0, 1))):
     print("Tangent OK")
 else:
     print("Tangent Malament")
+
+# Exponencials i Arrels
+
+dual1 = Dual(3, 2)
+
+exp_dual = dv.exp(dual1)
+log_dual = dv.ln(dual1)
+arr_dual = dv.sqrt(dual1)
+
+if (dv.is_dual_close(exp_dual, Dual(20.085536923187668, 40.171073846375226))):
+    print("Exponencial OK")
+else:
+    print("Exponencial Malament")
+
+if(dv.is_dual_close(log_dual, Dual(1.0986122886681098, 0.6666666666666666))):
+    print("Logaritme Natural OK")
+else:
+    print("Logaritme Natural Malament")
+
+if (dv.is_dual_close(arr_dual, Dual(1.7320508075688772, 0.5773502691896258))):
+    print("Arrel Quadrada OK")
+else:
+    print("Arrel Quadrada Malament")
+
+# Hiperbòliques
+
+sinh_pi = dv.sinh(np.pi)
+sinh_dual_pi = dv.sinh(Dual(np.pi, 1))
+
+cosh_pi = dv.cosh(np.pi)
+cosh_dual_pi = dv.cosh(Dual(np.pi, 1))
+
+tanh_pi = dv.tanh(np.pi)
+tanh_dual_pi = dv.tanh(Dual(np.pi, 1))
+
+if (np.isclose(sinh_pi, 11.5487393573) and 
+    np.isclose(sinh_dual_pi.real, 11.5487393573) and np.isclose(sinh_dual_pi.dual, 11.5919532755)):
+    print("Sinus Hiperbòlic OK")
+else:
+    print("Sinus Hiperbòlic Malament")
+
+if (np.isclose(cosh_pi, 11.5919532755) and
+    np.isclose(cosh_dual_pi.real, 11.5919532755) and np.isclose(cosh_dual_pi.dual, 11.5487393573)):
+    print("Cosinus Hiperbòlic OK")
+
+else:
+    print("Cosinus Hiperbòlic Malament")
+
+if (np.isclose(tanh_pi, 0.9962720762207499) and 
+        dv.is_dual_close(tanh_dual_pi, Dual(0.99627207622074994, 0.007441950142796213452334))):
+    print("Tangent Hiperbòlica OK")
+else:
+    print("Tangent Hiperbòlica Malament")
+
+ 

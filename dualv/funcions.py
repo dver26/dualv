@@ -1,6 +1,9 @@
 import numpy as np
 from .dual import *
 
+def is_dual_close(aprox, truth):
+    return abs(aprox.real - truth.real) < 1e-10 and abs(aprox.dual - truth.dual) < 1e-10
+
 def pot(n, x):
     res = 1
     for i in range(n):

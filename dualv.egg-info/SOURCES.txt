@@ -1,0 +1,10 @@
+README.md
+setup.py
+dualv/__init__.py
+dualv/dual.py
+dualv/funcions.py
+dualv.egg-info/PKG-INFO
+dualv.egg-info/SOURCES.txt
+dualv.egg-info/dependency_links.txt
+dualv.egg-info/requires.txt
+dualv.egg-info/top_level.txt

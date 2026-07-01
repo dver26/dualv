@@ -174,4 +174,33 @@ if (np.isclose(tanh_pi, 0.9962720762207499) and
 else:
     print("Tangent Hiperbòlica Malament")
 
- 
+# Comprobació
+
+def f1(x):
+    return 3*dv.pot(4, x) - 5*dv.pot(3, x) + 2*x - 7
+
+def f1_prime_exacta(x):
+    return 12*dv.pot(3, x) - 15*dv.pot(2, x) + 2 
+
+def f2(x):
+    return x*x * dv.sin(x)
+
+def f2_prime_exacta(x):
+    return 2*x*dv.sin(x) + x*x*dv.cos(x)
+
+def f3(x):
+    return dv.pot(3, x*x + 1)
+
+def f3_prime_exacta(x):
+    return 3*dv.pot(2, x**2 + 1) * 2*x
+
+x0 = 1.5
+
+for nombre, f, f_exacta in [
+    ("f1", f1, f1_prime_exacta),
+    ("f2", f2, f2_prime_exacta),
+    ("f3", f3, f3_prime_exacta),
+]:
+    d = Dual.diff_dual(x0)
+    resultat = dv.auto_diff(f, x0)
+    print(f"{nombre}: derivada_dualv = {resultat:.10f}  |  derivada_exacta = {f_exacta(x0):.10f}")
